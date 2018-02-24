@@ -1,9 +1,11 @@
-package de.gabstr.smack
+package de.gabstr.smack.controller
 
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import de.gabstr.smack.R
+import de.gabstr.smack.services.AuthService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
@@ -48,6 +50,10 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun createUserBtnClicked(view: View) {
+        AuthService.registerUser(this, "j@j.com", "123456") {complete ->
+            if(complete) {
 
+            }
+        }
     }
 }
