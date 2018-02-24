@@ -57,13 +57,14 @@ class CreateUserActivity : AppCompatActivity() {
 
     fun createUserBtnClicked(view: View) {
         enableSpinner(true)
-        var userName = createUserNameText.text.toString()
+        var userNameFull = createUserNameText.text.toString()
         val userEmail = createUserEmailText.text.toString()
         val userPassword = createUserPasswordText.text.toString()
 
-        if(userName.isNotEmpty()
+        if(userNameFull.isNotEmpty()
                 && userEmail.isNotEmpty()
                 && userPassword.isNotEmpty()) {
+            val userName = userNameFull.trim()
 
             AuthService.registerUser(this, userEmail, userPassword) {registerSuccess ->
                 if(registerSuccess) {
