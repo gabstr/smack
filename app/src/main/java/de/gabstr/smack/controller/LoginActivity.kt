@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         if(email.isNotEmpty()
                 && password.isNotEmpty()) {
-            AuthService.loginUser(this, email.trim(), password) {loginSuccess ->
+            AuthService.loginUser(email.trim(), password) {loginSuccess ->
                 if(loginSuccess) {
                     AuthService.findUserByEmail(this) {findSuccess ->
                         if (findSuccess) {

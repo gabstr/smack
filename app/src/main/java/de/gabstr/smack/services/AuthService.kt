@@ -15,11 +15,7 @@ import org.json.JSONObject
 
 object AuthService {
 
-//    var isLoggedIn = false
-//    var userEmail = ""
-//    var authToken = ""
-
-    fun registerUser(context: Context, email: String, password: String, complete: (Boolean) -> Unit) {
+    fun registerUser(email: String, password: String, complete: (Boolean) -> Unit) {
         val url = URL_REGISTER
 
         val jsonBody = JSONObject()
@@ -45,7 +41,7 @@ object AuthService {
         App.prefs.requestQueue.add(registerRequest)
     }
 
-    fun loginUser(context: Context, email: String, password: String, complete: (Boolean) -> Unit) {
+    fun loginUser(email: String, password: String, complete: (Boolean) -> Unit) {
         val url = URL_LOGIN
 
         val jsonBody = JSONObject()
@@ -79,8 +75,7 @@ object AuthService {
         App.prefs.requestQueue.add(loginRequest)
     }
 
-    fun createUser(context: Context
-                   , name: String, email: String, avatarName: String, avatarColor: String
+    fun createUser(name: String, email: String, avatarName: String, avatarColor: String
                    , complete: (Boolean) -> Unit) {
         val url = URL_CREATE_USER
 

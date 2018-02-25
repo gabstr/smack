@@ -1,10 +1,8 @@
 package de.gabstr.smack.services
 
-import android.content.Context
 import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.Volley
 import de.gabstr.smack.controller.App
 import de.gabstr.smack.model.Channel
 import de.gabstr.smack.utilities.URL_GET_CHANNELS
@@ -14,7 +12,7 @@ object MessageService {
 
     val channels = ArrayList<Channel>()
 
-    fun getChannels(context: Context, complete: (Boolean) -> Unit) {
+    fun getChannels(complete: (Boolean) -> Unit) {
         val url = URL_GET_CHANNELS
 
         val channelsRequest = object : JsonArrayRequest(Method.GET, url, null, Response.Listener {response ->

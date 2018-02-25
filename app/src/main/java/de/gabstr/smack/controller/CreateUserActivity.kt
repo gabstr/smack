@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.Toast
 import de.gabstr.smack.R
 import de.gabstr.smack.services.AuthService
-import de.gabstr.smack.services.UserDataService
 import de.gabstr.smack.utilities.BROADCAST_USER_DATA_CHANGE
 import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
@@ -66,11 +65,11 @@ class CreateUserActivity : AppCompatActivity() {
                 && userPassword.isNotEmpty()) {
             val userName = userNameFull.trim()
 
-            AuthService.registerUser(this, userEmail, userPassword) {registerSuccess ->
+            AuthService.registerUser(userEmail, userPassword) {registerSuccess ->
                 if(registerSuccess) {
-                    AuthService.loginUser(this, userEmail, userPassword) {loginSuccess ->
+                    AuthService.loginUser(userEmail, userPassword) {loginSuccess ->
                         if(loginSuccess) {
-                            AuthService.createUser(this, userName, userEmail
+                            AuthService.createUser(userName, userEmail
                                     , userAvatar, avatarColor) {createSuccess ->
                                 if(createSuccess) {
                                     val userDataChange = Intent(BROADCAST_USER_DATA_CHANGE)
